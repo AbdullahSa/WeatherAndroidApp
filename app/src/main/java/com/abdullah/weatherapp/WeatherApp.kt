@@ -13,15 +13,6 @@ class WeatherApp : Application() {
 
     private var networkComponent: NetworkComponent? = null
 
-    private var instance: WeatherApp? = null
-
-    public fun getInstance(): WeatherApp? {
-        if (instance == null) {
-            instance = WeatherApp()
-        }
-        return instance
-    }
-
     override fun onCreate() {
         super.onCreate()
         initDagger()
@@ -29,7 +20,7 @@ class WeatherApp : Application() {
 
     fun initDagger() {
         networkComponent = DaggerNetworkComponent.builder()
-                .networkModule(NetworkModule("api.openweathermap.org/data/2.5/",
+                .networkModule(NetworkModule("http://api.openweathermap.org/data/2.5/",
                         "954eb59461f972e120a38082d72f97a5"))
                 .build()
     }

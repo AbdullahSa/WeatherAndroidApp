@@ -1,6 +1,6 @@
 package com.abdullah.weatherapp.domain.di
 
-import com.abdullah.weatherapp.domain.service.CurrentWeatherService
+import com.abdullah.weatherapp.domain.service.rest.CurrentWeatherService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -11,7 +11,6 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
-import okhttp3.HttpUrl
 
 
 /**
