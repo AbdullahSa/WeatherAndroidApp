@@ -14,6 +14,7 @@ import com.abdullah.weatherapp.domain.enum.ServiceConstants
 import com.abdullah.weatherapp.model.Result
 import com.abdullah.weatherapp.presenter.MainPresenter
 import com.abdullah.weatherapp.util.StringHelper
+import com.bumptech.glide.Glide
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainView {
@@ -46,11 +47,11 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun fillWeatherResult(result: Result) {
-        val weather = result.weather.get(0);
+        val weather = result.weather.get(0)
         textViewDegree.setText(result.main.temp + " " + StringHelper(baseContext).getStringById(R.string.celcius))
         textViewDescription.setText(weather.description)
-        imageViewWeatherIcon.setImageURI(Uri.parse(ServiceConstants.HTTP_IMAGE_URL.text
-                + weather.icon + StringHelper(baseContext).getStringById(R.string.png)))
+        Glide.with(this).load(ServiceConstants.HTTP_IMAGE_URL.text + weather.icon +
+                StringHelper(baseContext).getStringById(R.string.png)).into(imageViewWeatherIcon)
     }
 
     override fun onDestroy() {
