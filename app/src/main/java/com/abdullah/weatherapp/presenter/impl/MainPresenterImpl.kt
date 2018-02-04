@@ -49,6 +49,8 @@ class MainPresenterImpl : MainPresenter {
             view = null
             compositeSubscription?.unsubscribe()
             compositeSubscription = null
+            gpsService?.stopUsingGPS()
+
         }
     }
 

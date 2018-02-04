@@ -4,6 +4,8 @@ import android.app.Application
 import com.abdullah.weatherapp.domain.di.DaggerNetworkComponent
 import com.abdullah.weatherapp.domain.di.NetworkComponent
 import com.abdullah.weatherapp.domain.di.NetworkModule
+import com.abdullah.weatherapp.domain.enum.ServiceConstants
+import com.abdullah.weatherapp.util.StringHelper
 
 /**
  * Created by abdullah on 27.1.2018.
@@ -20,8 +22,8 @@ class WeatherApp : Application() {
 
     fun initDagger() {
         networkComponent = DaggerNetworkComponent.builder()
-                .networkModule(NetworkModule("http://api.openweathermap.org/data/2.5/",
-                        "954eb59461f972e120a38082d72f97a5"))
+                .networkModule(NetworkModule(ServiceConstants.HTTP_URL.text,
+                        StringHelper(applicationContext).getStringById(R.string.api_key)))
                 .build()
     }
 

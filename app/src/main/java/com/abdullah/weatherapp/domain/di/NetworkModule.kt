@@ -1,5 +1,6 @@
 package com.abdullah.weatherapp.domain.di
 
+import com.abdullah.weatherapp.domain.enum.ServiceConstants
 import com.abdullah.weatherapp.domain.service.rest.CurrentWeatherService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -42,7 +43,8 @@ class NetworkModule {
             val originalHttpUrl = original.url()
 
             val url = originalHttpUrl.newBuilder()
-                    .addQueryParameter("appid", this.key)
+                    .addQueryParameter(ServiceConstants.APP_ID.text, this.key)
+                    .addQueryParameter(ServiceConstants.UNITS.text, ServiceConstants.DEGREE_PARAMETER.text)
                     .build()
 
             val requestBuilder = original.newBuilder()
